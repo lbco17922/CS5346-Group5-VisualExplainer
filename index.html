@@ -360,18 +360,24 @@
 		/* ── INLINE CLIP (left-side "GIF") ───────────────────────── */
     .step-clip {
       width: 100%;
-      margin-bottom: 1.25rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
       border-radius: 6px;
       overflow: hidden;
       border: 1px solid var(--rule);
       background: #1a1812;
     }
 
+    /* Steps that open with a clip need less top padding — the clip itself
+       creates enough visual separation from the previous step */
+    .step:has(.step-clip) {
+      padding-top: 4vh;
+    }
+
     .step-clip video {
       aspect-ratio: 1080 / 630;
       width: 100%;
       display: block;
-      
       object-fit: contain;
     }
 
@@ -497,21 +503,32 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
-        height: 72vw;
-        min-height: 300px;
-        max-height: 480px;
+        /* No fixed height — let content (video/iframe) dictate height */
         background: var(--viz-bg);
         border-top: 1px solid var(--rule);
         border-bottom: 1px solid var(--rule);
         margin-bottom: 2rem;
         padding: 1.25rem;
-        overflow: hidden;
+        overflow: visible;
       }
 
       .mobile-viz-slot .viz-label { margin-bottom: 0.75rem; }
 
+      /* Tableau iframes: give them a sensible fixed height */
       .mobile-viz-slot .viz-placeholder,
-      .mobile-viz-slot .viz-frame { flex: 1; width: 100%; }
+      .mobile-viz-slot .viz-frame {
+        width: 100%;
+        min-height: 300px;
+      }
+
+      /* Videos: let aspect-ratio do the work — no clipping */
+      .mobile-viz-slot video {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        object-fit: contain;
+        background: #1a1812;
+      }
     }
   </style>
 </head>
@@ -719,7 +736,7 @@
         </div>
       </div>
 
-      <div class="step" data-viz="viz-brand-1" style="margin-top: -8vh; margin-bottom: -25vh;">
+      <div class="step" data-viz="viz-brand-1">
         <p>
           All those subsidy-influenced purchases and PQP-driven re-entries eventually translate
           into demand for specific cars. And when buyers re-enter the market, they don't all
