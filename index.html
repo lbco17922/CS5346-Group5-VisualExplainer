@@ -277,6 +277,23 @@
       padding: 4px 12px;
       border-radius: 20px;
     }
+		
+		/* Chapter 3 video player */
+    #viz-brand-main video {
+      width: 100%;
+      flex: 1;
+      border-radius: 4px;
+      object-fit: contain;
+      background: #1a1812;
+    }
+
+    .video-hint {
+      margin-top: 0.75rem;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      align-self: center;
+    }
 
     /* ── STORY STEPS ─────────────────────────────────────────── */
     .chapter-header {
@@ -338,6 +355,35 @@
     .step-callout strong {
       font-weight: 500;
       color: var(--accent);
+    }
+		
+		/* ── INLINE CLIP (left-side "GIF") ───────────────────────── */
+    .step-clip {
+      width: 100%;
+      margin-bottom: 1.25rem;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: #1a1812;
+    }
+
+    .step-clip video {
+      aspect-ratio: 1080 / 630;
+      width: 100%;
+      display: block;
+      
+      object-fit: contain;
+    }
+
+    .step-clip-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--viz-bg);
+      padding: 5px 10px;
+      border-top: 1px solid var(--rule);
     }
 
     /* ── CONCLUSION ──────────────────────────────────────────── */
