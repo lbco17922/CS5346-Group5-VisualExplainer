@@ -19,10 +19,12 @@
       --accent:    #C9441A;
       --accent-lt: #F0D9CE;
       --rule:      rgba(26,24,18,0.12);
+      --panel-bg:  #FDFAF5;
       --viz-bg:    #EEEAE0;
       --serif:     'Playfair Display', Georgia, serif;
       --sans:      'DM Sans', system-ui, sans-serif;
-      --sidebar-w: 50vw;
+      --sidebar-w: 42vw;
+      --sticky-top: 0px;
     }
 
     html { scroll-behavior: smooth; }
@@ -42,7 +44,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 10vh 8vw;
+      padding: 10vh 8vw 10vh;
       position: relative;
       border-bottom: 1px solid var(--rule);
     }
@@ -52,7 +54,8 @@
       position: absolute;
       inset: 0;
       background: repeating-linear-gradient(
-        90deg, transparent,
+        90deg,
+        transparent,
         transparent calc(var(--sidebar-w) - 1px),
         var(--rule) var(--sidebar-w)
       );
@@ -60,168 +63,264 @@
     }
 
     .masthead-eyebrow {
-      font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 2rem;
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
     }
 
     .masthead-title {
       font-family: var(--serif);
       font-size: clamp(3rem, 7vw, 6.5rem);
-      font-weight: 700; line-height: 1.05; max-width: 14ch; margin-bottom: 1.5rem;
+      font-weight: 700;
+      line-height: 1.05;
+      max-width: 14ch;
+      margin-bottom: 1.5rem;
     }
 
-    .masthead-title em { font-style: italic; color: var(--accent); }
+    .masthead-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
 
     .masthead-subtitle {
-      font-size: 1.1rem; color: var(--muted); max-width: 44ch;
-      margin-bottom: 3rem; font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 44ch;
+      margin-bottom: 3rem;
+      font-weight: 300;
     }
 
     .masthead-deck {
-      font-size: 0.9rem; color: var(--muted); max-width: 44ch; line-height: 1.6;
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 44ch;
+      line-height: 1.6;
     }
 
     .scroll-cue {
-      margin-top: 4rem; display: flex; align-items: center; gap: 10px;
-      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); opacity: 0.7;
+      margin-top: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.7;
     }
 
-    .scroll-cue-line { width: 40px; height: 1px; background: var(--muted); }
+    .scroll-cue-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+    }
 
-    /* ── INTRO ───────────────────────────────────────────────── */
+    /* ── INTRO SECTION ───────────────────────────────────────── */
     #intro {
-      max-width: 680px; margin: 0 auto; padding: 10vh 2rem 8vh; text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 10vh 2rem 8vh;
+      text-align: center;
     }
 
-    #intro p { font-size: 1.25rem; font-weight: 300; line-height: 1.8; }
+    #intro p {
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
     #intro p + p { margin-top: 1.5rem; }
 
     .drop-cap::first-letter {
-      font-family: var(--serif); font-size: 4.5em; font-weight: 700;
-      float: left; line-height: 0.78; margin: 0.08em 0.1em 0 0; color: var(--accent);
+      font-family: var(--serif);
+      font-size: 4.5em;
+      font-weight: 700;
+      float: left;
+      line-height: 0.78;
+      margin: 0.08em 0.1em 0 0;
+      color: var(--accent);
     }
 
     /* ── SCROLLY LAYOUT ──────────────────────────────────────── */
     #scrolly {
-      display: flex; align-items: flex-start; position: relative;
+      display: flex;
+      align-items: flex-start;
+      position: relative;
     }
 
+    /* Story column — left, scrolling */
     #story {
-      width: var(--sidebar-w); flex-shrink: 0; padding: 0 4vw 20vh 8vw;
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      padding: 0 4vw 20vh 8vw;
     }
 
+    /* Viz panel — right, sticky */
     #viz-panel {
-      position: sticky; top: 0;
+      position: sticky;
+      top: var(--sticky-top);
       width: calc(100vw - var(--sidebar-w));
       height: 100vh;
       background: var(--viz-bg);
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden; border-left: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-left: 1px solid var(--rule);
     }
 
-    /* ── VIZ SCREENS ─────────────────────────────────────────── */
+    /* Individual viz screens */
     .viz-screen {
-      position: absolute; inset: 0;
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       padding: 2rem;
-      opacity: 0; transform: translateY(20px);
-      transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
-                  transform 0.6s cubic-bezier(0.4,0,0.2,1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                  transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       pointer-events: none;
+      will-change: opacity, transform;
     }
 
     .viz-screen.leaving {
-      opacity: 0; transform: translateY(-16px);
-      transition: opacity 0.35s cubic-bezier(0.4,0,1,1),
-                  transform 0.35s cubic-bezier(0.4,0,1,1);
+      opacity: 0;
+      transform: translateY(-16px);
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 1, 1),
+                  transform 0.35s cubic-bezier(0.4, 0, 1, 1);
     }
 
     .viz-screen.active {
-      opacity: 1; transform: translateY(0);
-      pointer-events: all; transition-delay: 0.1s;
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+      transition-delay: 0.1s;
     }
 
     .viz-label {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--muted);
-      margin-bottom: 1rem; align-self: flex-start;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      align-self: flex-start;
     }
 
-    /* Placeholder blocks (Chapters 1 & 2) */
+    .viz-frame {
+      width: 100%;
+      flex: 1;
+      border: none;
+      border-radius: 4px;
+      background: #fff;
+    }
+
     .viz-placeholder {
-      width: 100%; flex: 1; border-radius: 4px; background: #fff;
-      border: 1.5px dashed rgba(26,24,18,0.18);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 1rem; padding: 2rem; text-align: center;
-    }
-
-    .viz-placeholder-icon {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--accent-lt);
-      display: flex; align-items: center; justify-content: center;
-    }
-
-    .viz-placeholder-icon svg { width: 22px; height: 22px; color: var(--accent); }
-
-    .viz-placeholder-title {
-      font-family: var(--serif); font-size: 1.1rem; font-weight: 400;
-    }
-
-    .viz-placeholder-hint { font-size: 12px; color: var(--muted); max-width: 28ch; }
-
-    .viz-placeholder-tag {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.12em;
-      text-transform: uppercase; background: var(--accent-lt); color: var(--accent);
-      padding: 4px 12px; border-radius: 20px;
-    }
-
-    /* Chapter 3 video player */
-    #viz-brand-main video {
       width: 100%;
       flex: 1;
       border-radius: 4px;
-      object-fit: contain;
-      background: #1a1812;
+      background: #fff;
+      border: 1.5px dashed rgba(26,24,18,0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+      text-align: center;
     }
 
-    .video-hint {
-      margin-top: 0.75rem;
-      font-size: 11px;
+    .viz-placeholder-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .viz-placeholder-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+    }
+
+    .viz-placeholder-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .viz-placeholder-hint {
+      font-size: 12px;
       color: var(--muted);
-      letter-spacing: 0.05em;
-      align-self: center;
+      max-width: 28ch;
+    }
+
+    .viz-placeholder-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--accent-lt);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
     }
 
     /* ── STORY STEPS ─────────────────────────────────────────── */
     .chapter-header {
-      padding-top: 12vh; padding-bottom: 3rem; border-top: 1px solid var(--rule);
+      padding-top: 12vh;
+      padding-bottom: 3rem;
+      border-top: 1px solid var(--rule);
     }
 
     .chapter-num {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
     }
 
     .chapter-title {
       font-family: var(--serif);
       font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-      font-weight: 700; line-height: 1.2; margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
     }
 
     .chapter-question {
-      font-size: 0.95rem; font-style: italic; color: var(--muted);
-      border-left: 2px solid var(--accent); padding-left: 1rem; margin-top: 1rem;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--muted);
+      border-left: 2px solid var(--accent);
+      padding-left: 1rem;
+      margin-top: 1rem;
     }
 
     .step {
-      padding: 8vh 0; min-height: 40vh;
+      padding: 8vh 0;
+      min-height: 40vh;
     }
 
     .step p {
-      font-size: 1rem; font-weight: 300; line-height: 1.85;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.85;
     }
 
     .step p + p { margin-top: 1.2rem; }
@@ -233,110 +332,140 @@
       border-radius: 0 4px 4px 0;
       padding: 1rem 1.25rem;
       font-size: 0.9rem;
+      color: var(--ink);
     }
 
-    .step-callout strong { font-weight: 500; color: var(--accent); }
-
-    /* ── INLINE CLIP (left-side "GIF") ───────────────────────── */
-    .step-clip {
-      width: 100%;
-      margin-bottom: 1.25rem;
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--rule);
-      background: #1a1812;
-    }
-
-    .step-clip video {
-      aspect-ratio: 1080 / 630;
-      width: 100%;
-      display: block;
-      
-      object-fit: contain;
-    }
-
-    .step-clip-label {
-      font-size: 10px;
+    .step-callout strong {
       font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: var(--viz-bg);
-      padding: 5px 10px;
-      border-top: 1px solid var(--rule);
+      color: var(--accent);
     }
 
     /* ── CONCLUSION ──────────────────────────────────────────── */
     #conclusion {
-      max-width: 680px; margin: 0 auto;
-      padding: 12vh 2rem; text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 12vh 2rem 12vh;
+      text-align: center;
       border-top: 1px solid var(--rule);
     }
 
     #conclusion .concl-eyebrow {
-      font-size: 10px; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
     }
 
     #conclusion h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 700; line-height: 1.15; margin-bottom: 2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 2rem;
     }
 
     #conclusion p {
-      font-size: 1.05rem; font-weight: 300; color: var(--muted);
-      line-height: 1.85; max-width: 52ch; margin: 0 auto;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 52ch;
+      margin: 0 auto;
     }
 
     #conclusion p + p { margin-top: 1.5rem; }
 
     /* ── FOOTER ──────────────────────────────────────────────── */
     footer {
-      border-top: 1px solid var(--rule); padding: 3rem 8vw;
-      display: flex; justify-content: space-between;
-      align-items: center; flex-wrap: wrap; gap: 1rem;
-      font-size: 12px; color: var(--muted);
+      border-top: 1px solid var(--rule);
+      padding: 3rem 8vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 12px;
+      color: var(--muted);
     }
+
+    footer a { color: var(--muted); text-decoration: underline; }
 
     /* ── PROGRESS BAR ────────────────────────────────────────── */
     #progress-bar {
-      position: fixed; top: 0; left: 0; height: 2px;
-      background: var(--accent); width: 0%; z-index: 100;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 100;
       transition: width 0.1s linear;
     }
 
     /* ── CHAPTER NAV ─────────────────────────────────────────── */
     #chapter-nav {
-      position: fixed; right: 2rem; top: 50%;
+      position: fixed;
+      right: 2rem;
+      top: 50%;
       transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: 10px; z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 50;
     }
 
     .nav-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--rule); border: 1px solid var(--muted);
-      cursor: pointer; transition: background 0.3s, transform 0.3s;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--rule);
+      border: 1px solid var(--muted);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
     }
 
     .nav-dot.active {
-      background: var(--accent); border-color: var(--accent); transform: scale(1.4);
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.4);
     }
+
+    /* ── MOBILE VIZ SLOTS ───────────────────────────────────── */
+    .mobile-viz-slot { display: none; }
 
     /* ── RESPONSIVE ──────────────────────────────────────────── */
     @media (max-width: 860px) {
-      :root { --sidebar-w: 100vw; }
-      #scrolly { flex-direction: column; }
-      #viz-panel {
-        position: relative; width: 100vw;
-        height: 65vw; min-height: 320px;
-        border-left: none; border-top: 1px solid var(--rule);
-      }
-      #story { padding: 0 6vw 8vh; }
+      #viz-panel { display: none; }
       #chapter-nav { display: none; }
-      .step-clip video {
-        aspect-ratio: 1080 / 630;
+      #scrolly { display: block; }
+
+      #story {
+        width: 100%;
+        padding: 0 6vw 8vh;
       }
+
+      .mobile-viz-slot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 72vw;
+        min-height: 300px;
+        max-height: 480px;
+        background: var(--viz-bg);
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        margin-bottom: 2rem;
+        padding: 1.25rem;
+        overflow: hidden;
+      }
+
+      .mobile-viz-slot .viz-label { margin-bottom: 0.75rem; }
+
+      .mobile-viz-slot .viz-placeholder,
+      .mobile-viz-slot .viz-frame { flex: 1; width: 100%; }
     }
   </style>
 </head>
@@ -344,6 +473,7 @@
 
   <div id="progress-bar"></div>
 
+  <!-- ── CHAPTER NAV DOTS ─────────────────────────────────── -->
   <nav id="chapter-nav" aria-label="Chapter navigation">
     <div class="nav-dot active" data-target="chapter-1" title="EV Subsidies"></div>
     <div class="nav-dot" data-target="chapter-2" title="PQP & Renewal"></div>
@@ -383,6 +513,7 @@
   <!-- ── SCROLLY ────────────────────────────────────────────── -->
   <div id="scrolly">
 
+    <!-- LEFT: narrative steps -->
     <div id="story">
 
       <!-- ── CHAPTER 1 ── -->
@@ -392,6 +523,19 @@
         <p class="chapter-question">
           How has the introduction of EV subsidy policy influenced the decision to buy electric cars in Singapore?
         </p>
+      </div>
+      <!-- mobile viz: chapter 1 -->
+      <div class="mobile-viz-slot">
+        <p class="viz-label">Chapter 1 &nbsp;·&nbsp; EV Adoption</p>
+        <!-- PASTE YOUR TEAMMATE 1 TABLEAU EMBED HERE (same as desktop viz-ev-1) -->
+        <div class="viz-placeholder">
+          <div class="viz-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <p class="viz-placeholder-title">EV Registrations vs. Policy Timeline</p>
+          <p class="viz-placeholder-hint">Paste Tableau embed here.</p>
+          <span class="viz-placeholder-tag">Tableau Embed</span>
+        </div>
       </div>
 
       <div class="step" data-viz="viz-ev-1">
@@ -440,6 +584,19 @@
           How does the Prevailing Quota Premium affect the decision to revalidate or decommission an owned car in Singapore?
         </p>
       </div>
+      <!-- mobile viz: chapter 2 part 1 -->
+      <div class="mobile-viz-slot">
+        <p class="viz-label">Chapter 2 &nbsp;·&nbsp; PQP vs. Renewal Decisions</p>
+        <!-- PASTE YOUR TABLEAU EMBED (viz-pqp-1) HERE -->
+        <div class="viz-placeholder">
+          <div class="viz-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <p class="viz-placeholder-title">PQP Levels &amp; Renewal / Decommission Rates</p>
+          <p class="viz-placeholder-hint">Paste Tableau embed here.</p>
+          <span class="viz-placeholder-tag">Tableau Embed</span>
+        </div>
+      </div>
 
       <div class="step" data-viz="viz-pqp-1">
         <p>
@@ -466,7 +623,7 @@
         </div>
       </div>
 
-      <div class="step" data-viz="viz-pqp-2">
+      <div class="step" data-viz="viz-pqp-1">
         <p>
           But owner decisions don't happen in isolation. The monthly quota of new COE certificates
           released by LTA is a supply-side lever that directly pressures prices — fewer certificates
@@ -479,7 +636,7 @@
         </p>
       </div>
 
-      <div class="step" data-viz="viz-pqp-2">
+      <div class="step" data-viz="viz-pqp-1">
         <p>
           This creates a feedback loop: LTA restricts quota → COE prices rise → PQP climbs →
           renewal becomes expensive → more cars are decommissioned → demand for new cars
@@ -500,6 +657,20 @@
           How have the rankings of car sales per brand changed throughout the years?
         </p>
       </div>
+      <!-- mobile viz: chapter 3 -->
+      <div class="mobile-viz-slot">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; Brand Sales Rankings</p>
+        <!-- PASTE YOUR TEAMMATE 3 VIDEO/D3 EMBED HERE (same as desktop viz-brand-1) -->
+        <div class="viz-placeholder">
+          <div class="viz-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="4" height="10" rx="1"/><rect x="9" y="4" width="4" height="13" rx="1"/><rect x="16" y="2" width="4" height="15" rx="1"/></svg>
+          </div>
+          <p class="viz-placeholder-title">Brand Sales Rankings Over Time</p>
+          <p class="viz-placeholder-hint">Drop in a video tag, D3 script, or iframe here.</p>
+          <span class="viz-placeholder-tag">Video or D3.js</span>
+        </div>
+      </div>
+
       <div class="step" data-viz="viz-brand-1" style="margin-top: -8vh; margin-bottom: -25vh;">
         <p>
           All those subsidy-influenced purchases and PQP-driven re-entries eventually translate
@@ -661,9 +832,10 @@
     <!-- RIGHT: sticky viz panel -->
     <div id="viz-panel">
 
-      <!-- Chapter 1 placeholder -->
+      <!-- VIZ: EV chart (Chapter 1) -->
       <div class="viz-screen active" id="viz-ev-1">
         <p class="viz-label">Chapter 1 &nbsp;·&nbsp; EV Adoption</p>
+        <!-- ↓↓↓ TEAMMATE 1: Replace this placeholder with your Tableau embed code ↓↓↓ -->
         <div class="viz-placeholder">
           <div class="viz-placeholder-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
@@ -672,11 +844,13 @@
           <p class="viz-placeholder-hint">Paste your Tableau embed &lt;script&gt; tag here, replacing this entire div.viz-placeholder block.</p>
           <span class="viz-placeholder-tag">Tableau Embed</span>
         </div>
+        <!-- ↑↑↑ End Teammate 1 block ↑↑↑ -->
       </div>
 
-      <!-- Chapter 2 placeholder — view 1 -->
+      <!-- VIZ: PQP chart (Chapter 2, first view) -->
       <div class="viz-screen" id="viz-pqp-1">
         <p class="viz-label">Chapter 2 &nbsp;·&nbsp; PQP vs. Renewal Decisions</p>
+        <!-- ↓↓↓ YOUR VIZ: Replace this placeholder with your Tableau embed code ↓↓↓ -->
         <div class="viz-placeholder">
           <div class="viz-placeholder-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -685,19 +859,7 @@
           <p class="viz-placeholder-hint">Paste your Tableau embed &lt;script&gt; tag here, replacing this entire div.viz-placeholder block.</p>
           <span class="viz-placeholder-tag">Tableau Embed</span>
         </div>
-      </div>
-
-      <!-- Chapter 2 placeholder — view 2 -->
-      <div class="viz-screen" id="viz-pqp-2">
-        <p class="viz-label">Chapter 2 &nbsp;·&nbsp; Quota Supply &amp; PQP Feedback Loop</p>
-        <div class="viz-placeholder">
-          <div class="viz-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/><circle cx="12" cy="12" r="3" fill="none"/></svg>
-          </div>
-          <p class="viz-placeholder-title">Monthly Quota Supply Overlaid on PQP &amp; Decommissioning</p>
-          <p class="viz-placeholder-hint">Paste your second Tableau embed &lt;script&gt; tag here, replacing this entire div.viz-placeholder block.</p>
-          <span class="viz-placeholder-tag">Tableau Embed</span>
-        </div>
+        <!-- ↑↑↑ End your first viz block ↑↑↑ -->
       </div>
 
       <!-- Chapter 3 — persistent full video player -->
@@ -739,62 +901,78 @@
 
   <!-- ── FOOTER ─────────────────────────────────────────────── -->
   <footer>
-    <span>Information Visualization Course &nbsp;·&nbsp; Group Project</span>
-    <span>Data sources: LTA, OneMotoring, Singapore Department of Statistics</span>
+    <span>CS5346 Information Visualization &nbsp;·&nbsp; Group 5</span>
+    <span>Data sources: LTA, Singapore Open Data Portal</span>
   </footer>
 
-  <!-- ── SCROLLAMA + VIZ SWITCHING ────────────────────────── -->
+  <!-- ── SCROLLAMA LOGIC ────────────────────────────────────── -->
   <script>
-    const scroller    = scrollama();
-    const navDots     = document.querySelectorAll('.nav-dot');
+    const scroller = scrollama();
+    const navDots  = document.querySelectorAll('.nav-dot');
     const progressBar = document.getElementById('progress-bar');
 
-    // Progress bar
+    // Throttled progress bar using rAF
     let rafPending = false;
     function updateProgress() {
-      const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
       progressBar.style.width = pct + '%';
       rafPending = false;
     }
     window.addEventListener('scroll', () => {
-      if (!rafPending) { rafPending = true; requestAnimationFrame(updateProgress); }
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(updateProgress);
+      }
     }, { passive: true });
 
-    // Viz crossfade
+    // Smooth viz crossfade: outgoing gets .leaving, then .active is applied after a frame
     let currentVizId = null;
     function showViz(id) {
       if (id === currentVizId) return;
       currentVizId = id;
-      const all      = document.querySelectorAll('.viz-screen');
+
+      const all = document.querySelectorAll('.viz-screen');
       const incoming = document.getElementById(id);
       if (!incoming) return;
+
       all.forEach(el => {
         if (el === incoming) return;
         if (el.classList.contains('active')) {
           el.classList.add('leaving');
           el.classList.remove('active');
-          el.addEventListener('transitionend', () => el.classList.remove('leaving'), { once: true });
+          el.addEventListener('transitionend', () => {
+            el.classList.remove('leaving');
+          }, { once: true });
         }
       });
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        incoming.classList.add('active');
-      }));
+
+      // Small delay so leaving transition starts first
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          incoming.classList.add('active');
+        });
+      });
     }
 
     function setNavDot(chapterId) {
       navDots.forEach(d => d.classList.remove('active'));
-      const map = { 'chapter-1': 0, 'chapter-2': 1, 'chapter-3': 2 };
-      const idx = map[chapterId];
+      const chapterMap = { 'chapter-1': 0, 'chapter-2': 1, 'chapter-3': 2 };
+      const idx = chapterMap[chapterId];
       if (idx !== undefined && navDots[idx]) navDots[idx].classList.add('active');
     }
 
+    // Nav dot click
     navDots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
-        const el = document.getElementById(['chapter-1','chapter-2','chapter-3'][i]);
+        const targets = ['chapter-1', 'chapter-2', 'chapter-3'];
+        const el = document.getElementById(targets[i]);
         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
 
+    // Scrollama init — offset 0.55 so trigger fires when step is comfortably in view
     scroller
       .setup({ step: '.step', offset: 0.55, debug: false })
       .onStepEnter(({ element }) => {
