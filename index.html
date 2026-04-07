@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,27 +8,37 @@
   <script src="https://cdn.jsdelivr.net/npm/scrollama@3.2.0/build/scrollama.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
-      --cream:     #F5F0E8;
-      --ink:       #1A1812;
-      --muted:     #6B6558;
-      --accent:    #C9441A;
+      --cream: #F5F0E8;
+      --ink: #1A1812;
+      --muted: #6B6558;
+      --accent: #C9441A;
       --accent-lt: #F0D9CE;
-      --rule:      rgba(26,24,18,0.12);
-      --panel-bg:  #FDFAF5;
-      --viz-bg:    #EEEAE0;
-      --serif:     'Playfair Display', Georgia, serif;
-      --sans:      'DM Sans', system-ui, sans-serif;
+      --rule: rgba(26, 24, 18, 0.12);
+      --panel-bg: #FDFAF5;
+      --viz-bg: #EEEAE0;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
       --sidebar-w: 42vw;
       --sticky-top: 0px;
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       background: var(--cream);
@@ -53,12 +64,10 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent calc(var(--sidebar-w) - 1px),
-        var(--rule) var(--sidebar-w)
-      );
+      background: repeating-linear-gradient(90deg,
+          transparent,
+          transparent calc(var(--sidebar-w) - 1px),
+          var(--rule) var(--sidebar-w));
       pointer-events: none;
     }
 
@@ -134,7 +143,9 @@
       line-height: 1.8;
     }
 
-    #intro p + p { margin-top: 1.5rem; }
+    #intro p+p {
+      margin-top: 1.5rem;
+    }
 
     .drop-cap::first-letter {
       font-family: var(--serif);
@@ -186,7 +197,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                  transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       pointer-events: none;
       will-change: opacity, transform;
     }
@@ -195,7 +206,7 @@
       opacity: 0;
       transform: translateY(-16px);
       transition: opacity 0.35s cubic-bezier(0.4, 0, 1, 1),
-                  transform 0.35s cubic-bezier(0.4, 0, 1, 1);
+        transform 0.35s cubic-bezier(0.4, 0, 1, 1);
     }
 
     .viz-screen.active {
@@ -228,7 +239,7 @@
       flex: 1;
       border-radius: 4px;
       background: #fff;
-      border: 1.5px dashed rgba(26,24,18,0.18);
+      border: 1.5px dashed rgba(26, 24, 18, 0.18);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -277,8 +288,8 @@
       padding: 4px 12px;
       border-radius: 20px;
     }
-		
-		/* Chapter 3 video player */
+
+    /* Chapter 3 video player */
     #viz-brand-main video {
       width: 100%;
       flex: 1;
@@ -340,7 +351,9 @@
       line-height: 1.85;
     }
 
-    .step p + p { margin-top: 1.2rem; }
+    .step p+p {
+      margin-top: 1.2rem;
+    }
 
     .step-callout {
       margin: 1.5rem 0;
@@ -356,8 +369,8 @@
       font-weight: 500;
       color: var(--accent);
     }
-		
-		/* ── INLINE CLIP (left-side "GIF") ───────────────────────── */
+
+    /* ── INLINE CLIP (left-side "GIF") ───────────────────────── */
     .step-clip {
       width: 100%;
       margin-top: 0;
@@ -427,7 +440,9 @@
       margin: 0 auto;
     }
 
-    #conclusion p + p { margin-top: 1.5rem; }
+    #conclusion p+p {
+      margin-top: 1.5rem;
+    }
 
     /* ── FOOTER ──────────────────────────────────────────────── */
     footer {
@@ -442,7 +457,10 @@
       color: var(--muted);
     }
 
-    footer a { color: var(--muted); text-decoration: underline; }
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
 
     /* ── PROGRESS BAR ────────────────────────────────────────── */
     #progress-bar {
@@ -485,13 +503,23 @@
     }
 
     /* ── MOBILE VIZ SLOTS ───────────────────────────────────── */
-    .mobile-viz-slot { display: none; }
+    .mobile-viz-slot {
+      display: none;
+    }
 
     /* ── RESPONSIVE ──────────────────────────────────────────── */
     @media (max-width: 860px) {
-      #viz-panel { display: none; }
-      #chapter-nav { display: none; }
-      #scrolly { display: block; }
+      #viz-panel {
+        display: none;
+      }
+
+      #chapter-nav {
+        display: none;
+      }
+
+      #scrolly {
+        display: block;
+      }
 
       #story {
         width: 100%;
@@ -512,7 +540,9 @@
         overflow: visible;
       }
 
-      .mobile-viz-slot .viz-label { margin-bottom: 0.75rem; }
+      .mobile-viz-slot .viz-label {
+        margin-bottom: 0.75rem;
+      }
 
       /* Tableau iframes: give them a sensible fixed height */
       .mobile-viz-slot .viz-placeholder,
@@ -532,6 +562,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <div id="progress-bar"></div>
@@ -591,14 +622,8 @@
       <div class="mobile-viz-slot">
         <p class="viz-label">Chapter 1 &nbsp;·&nbsp; EV Adoption</p>
         <!-- PASTE YOUR TEAMMATE 1 TABLEAU EMBED HERE (same as desktop viz-ev-1) -->
-        <div class="viz-placeholder">
-          <div class="viz-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
-          <p class="viz-placeholder-title">EV Registrations vs. Policy Timeline</p>
-          <p class="viz-placeholder-hint">Paste Tableau embed here.</p>
-          <span class="viz-placeholder-tag">Tableau Embed</span>
-        </div>
+        <iframe src="D4.html" class="viz-frame" style="min-height:520px; border:none; border-radius:4px;"
+          title="EV vs ICE Policy Impact – D4"></iframe>
       </div>
 
       <div class="step" data-viz="viz-ev-1">
@@ -644,7 +669,8 @@
         <p class="chapter-num">Chapter 2 of 3</p>
         <h2 class="chapter-title">Keep or Let Go?</h2>
         <p class="chapter-question">
-          How does the Prevailing Quota Premium affect the decision to revalidate or decommission an owned car in Singapore?
+          How does the Prevailing Quota Premium affect the decision to revalidate or decommission an owned car in
+          Singapore?
         </p>
       </div>
       <!-- mobile viz: chapter 2 part 1 -->
@@ -653,7 +679,9 @@
         <!-- PASTE YOUR TABLEAU EMBED (viz-pqp-1) HERE -->
         <div class="viz-placeholder">
           <div class="viz-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
           </div>
           <p class="viz-placeholder-title">PQP Levels &amp; Renewal / Decommission Rates</p>
           <p class="viz-placeholder-hint">Paste Tableau embed here.</p>
@@ -726,13 +754,17 @@
         <!-- PASTE YOUR TEAMMATE 3 VIDEO/D3 EMBED HERE (same as desktop viz-brand-1) -->
         <div class="viz-placeholder">
           <div class="viz-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="4" height="10" rx="1"/><rect x="9" y="4" width="4" height="13" rx="1"/><rect x="16" y="2" width="4" height="15" rx="1"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="7" width="4" height="10" rx="1" />
+              <rect x="9" y="4" width="4" height="13" rx="1" />
+              <rect x="16" y="2" width="4" height="15" rx="1" />
+            </svg>
           </div>
           <p class="viz-placeholder-title">Brand Sales Rankings · Full Animation</p>
           <video controls muted playsinline src="q3-assets/car_video_02.mp4"
-						style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
-					</video>
-					<p class="video-hint">▶ Play · pause · and scrub to any moment in the animation</p>
+            style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+          </video>
+          <p class="video-hint">▶ Play · pause · and scrub to any moment in the animation</p>
         </div>
       </div>
 
@@ -901,14 +933,8 @@
       <div class="viz-screen active" id="viz-ev-1">
         <p class="viz-label">Chapter 1 &nbsp;·&nbsp; EV Adoption</p>
         <!-- ↓↓↓ TEAMMATE 1: Replace this placeholder with your Tableau embed code ↓↓↓ -->
-        <div class="viz-placeholder">
-          <div class="viz-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          </div>
-          <p class="viz-placeholder-title">EV Registrations vs. Policy Timeline</p>
-          <p class="viz-placeholder-hint">Paste your Tableau embed &lt;script&gt; tag here, replacing this entire div.viz-placeholder block.</p>
-          <span class="viz-placeholder-tag">Tableau Embed</span>
-        </div>
+        <iframe src="D4.html" class="viz-frame" style="min-height:520px; border:none; border-radius:4px;"
+          title="EV vs ICE Policy Impact – D4"></iframe>
         <!-- ↑↑↑ End Teammate 1 block ↑↑↑ -->
       </div>
 
@@ -918,10 +944,13 @@
         <!-- ↓↓↓ YOUR VIZ: Replace this placeholder with your Tableau embed code ↓↓↓ -->
         <div class="viz-placeholder">
           <div class="viz-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
           </div>
           <p class="viz-placeholder-title">PQP Levels &amp; Renewal / Decommission Rates</p>
-          <p class="viz-placeholder-hint">Paste your Tableau embed &lt;script&gt; tag here, replacing this entire div.viz-placeholder block.</p>
+          <p class="viz-placeholder-hint">Paste your Tableau embed &lt;script&gt; tag here, replacing this entire
+            div.viz-placeholder block.</p>
           <span class="viz-placeholder-tag">Tableau Embed</span>
         </div>
         <!-- ↑↑↑ End your first viz block ↑↑↑ -->
@@ -931,7 +960,7 @@
       <div class="viz-screen" id="viz-brand-main">
         <p class="viz-label">Chapter 3 &nbsp;·&nbsp; Brand Sales Rankings · Full Animation</p>
         <video controls muted playsinline src="q3-assets/car_video_02.mp4"
-               style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
         </video>
         <p class="video-hint">▶ Play · pause · and scrub to any moment in the animation</p>
       </div>
@@ -973,7 +1002,7 @@
   <!-- ── SCROLLAMA LOGIC ────────────────────────────────────── -->
   <script>
     const scroller = scrollama();
-    const navDots  = document.querySelectorAll('.nav-dot');
+    const navDots = document.querySelectorAll('.nav-dot');
     const progressBar = document.getElementById('progress-bar');
 
     // Throttled progress bar using rAF
@@ -1044,8 +1073,8 @@
         const vizId = element.getAttribute('data-viz');
         if (vizId) {
           showViz(vizId);
-          if (vizId.startsWith('viz-ev'))    setNavDot('chapter-1');
-          if (vizId.startsWith('viz-pqp'))   setNavDot('chapter-2');
+          if (vizId.startsWith('viz-ev')) setNavDot('chapter-1');
+          if (vizId.startsWith('viz-pqp')) setNavDot('chapter-2');
           if (vizId.startsWith('viz-brand')) setNavDot('chapter-3');
         }
       });
@@ -1054,4 +1083,5 @@
   </script>
 
 </body>
+
 </html>
