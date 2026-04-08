@@ -11,7 +11,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet" />
-
+	<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+	<script type="module">
+    import { TableauEventType } from 'https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js';
+    const tableauViz = document.getElementById('tableauViz');
+    window.addEventListener('resize', () => tableauViz.resize());
+  </script>
   <style>
     *,
     *::before,
@@ -194,6 +199,7 @@
       align-items: center;
       justify-content: center;
       padding: 2rem;
+			padding-right: 3rem;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
@@ -477,7 +483,7 @@
     /* ── CHAPTER NAV ─────────────────────────────────────────── */
     #chapter-nav {
       position: fixed;
-      right: 2rem;
+      right: 1.5rem;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -719,73 +725,68 @@
           Singapore?
         </p>
       </div>
-      <!-- mobile viz: chapter 2 part 1 -->
+      <!-- mobile viz: chapter 2 -->
       <div class="mobile-viz-slot">
         <p class="viz-label">Chapter 2 &nbsp;·&nbsp; PQP vs. Renewal Decisions</p>
-        <!-- PASTE YOUR TABLEAU EMBED (viz-pqp-1) HERE -->
-        <div class="viz-placeholder">
-          <div class="viz-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-            </svg>
-          </div>
-          <p class="viz-placeholder-title">PQP Levels &amp; Renewal / Decommission Rates</p>
-          <p class="viz-placeholder-hint">Paste Tableau embed here.</p>
-          <span class="viz-placeholder-tag">Tableau Embed</span>
-        </div>
+        <tableau-viz id="quarterlyViz"       
+					src='https://public.tableau.com/views/PQPvsDeregistrationRevalidation/Quarterly'      
+					toolbar="bottom" device="phone" width="100%" hide-tabs>
+				</tableau-viz>
       </div>
 
-      <div class="step" data-viz="viz-pqp-1">
+      <div class="step" data-viz="viz-pqp">
         <p>
-          Buying a car is only half the equation. Every Singapore car owner faces a second
-          decision a decade later: when your Certificate of Entitlement expires, do you pay
-          to renew — or walk away?
+          Buying a new ride is only half the equation. 
+				</p>
+				<p>
+					For hundreds of thousands of Singaporeans who already
+					owned a vehicle, a different clock is ticking - the Certificate of Entitlement. 
+					After 10 years, they face a pivotal question, whether their vehicle is still worth to pay
+					the CoE Revalidation cost, or they walk away and re-enter the market for a new one?
         </p>
         <p>
           That decision is anchored by one number: the Prevailing Quota Premium, or PQP.
-          Calculated as a rolling three-month average of COE bids, it sets the floor for
-          what renewal costs.
         </p>
+				<div class="step-callout">
+          <strong>Prevailing Quota Premium</strong> is the calculated moving average of the last 3 months of CoE bids -
+					meaning it directly reflects how hot or cold the market is at one moment.
+					<br /><br />
+					2 options for CoE revalidation - 5-year renewal for 50% PQP of the month, or 10-year renewal
+					for the full price of PQP of the month.
+        </div>
       </div>
 
-      <div class="step" data-viz="viz-pqp-1">
+      <div class="step" data-viz="viz-pqp">
         <p>
           When PQP is high, renewal becomes expensive — often exceeding the market value
-          of the car itself. Owners choose to decommission and exit, or re-enter as new buyers.
+          of the car itself. Owners might opt to decommission and exit, or re-enter as new buyers.
           When PQP dips, the math flips: renewing is cheaper than replacing.
         </p>
+				<p>
+					This is effectively seen in car ownerships. The graphs of Category A and Category B, which are the
+					categories of CoE for cars, depict increasing renewals when PQP was at fairly low points and 
+					low renewals count when PQP was high. In Category B, however, more owners chose to renew
+					for the longer term instead of only 5 years.
+				</p>
+				<p>
+					On the other hand, the same cannot be said with the other categories.
+				</p>
+				<p>
+					Category C is for goods vehicle and bus. The ratio between decommissioning and revalidation
+					in this category constantly changed in 10 years, but one can see that within this period,
+					5-years revalidation has been a popular option.
+				</p>
+				<p>
+					In plain sight, holders of Category D CoE also didn't seem to be budged by the rise and fall of PQP.
+					Deregistrations dominated, but renewals levels were quite steady. 
+					In many quarters, more owners even opted to renew their motorcycle for another 10 years rather than 5 years. 
+				</p>
         <div class="step-callout">
-          <strong>Watch for:</strong> Clusters of decommissioning activity that trail PQP peaks
-          by 3–6 months — the lag between the market signal and the owner's decision point.
+          <strong>Watch for:</strong> Clusters of renewal activity that follow PQP drops, signalling
+					real relationship between cost and the owner's decision point.
         </div>
       </div>
-
-      <div class="step" data-viz="viz-pqp-1">
-        <p>
-          But owner decisions don't happen in isolation. The monthly quota of new COE certificates
-          released by LTA is a supply-side lever that directly pressures prices — fewer certificates
-          means fiercer bidding, which drives PQP higher.
-        </p>
-        <p>
-          Overlaying monthly new-car quotas against decommissioning volumes reveals that many
-          spikes in car exits trace back to supply decisions made months earlier — not just
-          individual financial calculus.
-        </p>
-      </div>
-
-      <div class="step" data-viz="viz-pqp-1">
-        <p>
-          This creates a feedback loop: LTA restricts quota → COE prices rise → PQP climbs →
-          renewal becomes expensive → more cars are decommissioned → demand for new cars
-          rises → next COE round sees heavier bidding. Policy, market, and individual decision
-          form a closed circuit.
-        </p>
-        <div class="step-callout">
-          <strong>Implication:</strong> PQP-driven decommissioning is as much a product of
-          LTA's supply management as it is of any owner's personal finances.
-        </div>
-      </div>
-
+			
       <!-- ── CHAPTER 3 ── -->
       <div class="chapter-header" id="chapter-3">
         <p class="chapter-num">Chapter 3 of 3</p>
@@ -797,7 +798,6 @@
       <!-- mobile viz: chapter 3 -->
       <div class="mobile-viz-slot">
         <p class="viz-label">Chapter 3 &nbsp;·&nbsp; Brand Sales Rankings</p>
-        <!-- PASTE YOUR TEAMMATE 3 VIDEO/D3 EMBED HERE (same as desktop viz-brand-1) -->
         <div class="viz-placeholder">
           <div class="viz-placeholder-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -814,7 +814,7 @@
         </div>
       </div>
 
-      <div class="step" data-viz="viz-brand-1">
+      <div class="step" data-viz="viz-brand-main">
         <p>
           All those subsidy-influenced purchases and PQP-driven re-entries eventually translate
           into demand for specific cars. And when buyers re-enter the market, they don't all
@@ -975,7 +975,7 @@
     <!-- RIGHT: sticky viz panel -->
     <div id="viz-panel">
 
-      <!-- VIZ: EV chart (Chapter 1) -->
+      <!-- Chapter 1 - EV vs ICE Chart -->
       <div class="viz-screen active" id="viz-ev-1">
         <p class="viz-label">Chapter 1 &nbsp;·&nbsp; EV Adoption</p>
         <!-- ↓↓↓ TEAMMATE 1: Replace this placeholder with your Tableau embed code ↓↓↓ -->
@@ -984,22 +984,13 @@
         <!-- ↑↑↑ End Teammate 1 block ↑↑↑ -->
       </div>
 
-      <!-- VIZ: PQP chart (Chapter 2, first view) -->
-      <div class="viz-screen" id="viz-pqp-1">
-        <p class="viz-label">Chapter 2 &nbsp;·&nbsp; PQP vs. Renewal Decisions</p>
-        <!-- ↓↓↓ YOUR VIZ: Replace this placeholder with your Tableau embed code ↓↓↓ -->
-        <div class="viz-placeholder">
-          <div class="viz-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-            </svg>
-          </div>
-          <p class="viz-placeholder-title">PQP Levels &amp; Renewal / Decommission Rates</p>
-          <p class="viz-placeholder-hint">Paste your Tableau embed &lt;script&gt; tag here, replacing this entire
-            div.viz-placeholder block.</p>
-          <span class="viz-placeholder-tag">Tableau Embed</span>
-        </div>
-        <!-- ↑↑↑ End your first viz block ↑↑↑ -->
+      <!-- Chapter 2 - PQP vs Revalidation / Deregistration -->
+      <div class="viz-screen" id="viz-pqp">
+        <p class="viz-label">Chapter 2 &nbsp;·&nbsp; PQP vs Renewal Decisions</p>
+        <tableau-viz id="quarterlyViz"       
+					src='https://public.tableau.com/views/PQPvsDeregistrationRevalidation/Quarterly'      
+					toolbar="bottom" hide-tabs>
+				</tableau-viz>
       </div>
 
       <!-- Chapter 3 — persistent full video player -->
