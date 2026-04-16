@@ -78,7 +78,7 @@
 
     .masthead-eyebrow {
       font-family: var(--sans);
-      font-size: 11px;
+      font-size: 15px;
       font-weight: 500;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -101,7 +101,7 @@
     }
 
     .masthead-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.35rem;
       color: var(--muted);
       max-width: 44ch;
       margin-bottom: 3rem;
@@ -109,7 +109,7 @@
     }
 
     .masthead-deck {
-      font-size: 0.9rem;
+      font-size: 1.15rem;
       color: var(--muted);
       max-width: 44ch;
       line-height: 1.6;
@@ -120,7 +120,7 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 12px;
+      font-size: 16px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--muted);
@@ -142,7 +142,7 @@
     }
 
     #intro p {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 300;
       color: var(--ink);
       line-height: 1.8;
@@ -223,13 +223,44 @@
     }
 
     .viz-label {
-      font-size: 10px;
+      font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--muted);
       margin-bottom: 1rem;
       align-self: flex-start;
+    }
+
+    /* Chapter 3 — left column period headers */
+    .step-period-header {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--fg);
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
+      margin: 0 0 1.1rem 0;
+      line-height: 1.2;
+    }
+
+    /* Chapter 3 — prominent period label */
+    #viz-brand-hook .viz-label,
+    #viz-brand-stable .viz-label,
+    #viz-brand-covid .viz-label,
+    #viz-brand-frozen .viz-label,
+    #viz-brand-ev .viz-label,
+    #viz-brand-neworder .viz-label {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: var(--fg);
+      background: rgba(255,255,255,0.06);
+      border-left: 4px solid var(--accent);
+      padding: 0.65rem 0.9rem;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      align-self: stretch;
     }
 
     .viz-frame {
@@ -279,13 +310,13 @@
     }
 
     .viz-placeholder-hint {
-      font-size: 12px;
+      font-size: 16px;
       color: var(--muted);
       max-width: 28ch;
     }
 
     .viz-placeholder-tag {
-      font-size: 10px;
+      font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -295,8 +326,10 @@
       border-radius: 20px;
     }
 
-    /* Chapter 3 video player */
-    #viz-brand-main video {
+    /* Chapter 3 video players */
+    #viz-brand-hook video, #viz-brand-stable video,
+    #viz-brand-covid video, #viz-brand-frozen video, #viz-brand-ev video,
+    #viz-brand-neworder video {
       width: 100%;
       flex: 1;
       border-radius: 4px;
@@ -306,7 +339,7 @@
 
     .video-hint {
       margin-top: 0.75rem;
-      font-size: 11px;
+      font-size: 15px;
       color: var(--muted);
       letter-spacing: 0.05em;
       align-self: center;
@@ -320,7 +353,7 @@
     }
 
     .chapter-num {
-      font-size: 10px;
+      font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -337,7 +370,7 @@
     }
 
     .chapter-question {
-      font-size: 0.95rem;
+      font-size: 1.2rem;
       font-style: italic;
       color: var(--muted);
       border-left: 2px solid var(--accent);
@@ -351,7 +384,7 @@
     }
 
     .step p {
-      font-size: 1rem;
+      font-size: 1.25rem;
       font-weight: 300;
       color: var(--ink);
       line-height: 1.85;
@@ -367,7 +400,7 @@
       border-left: 3px solid var(--accent);
       border-radius: 0 4px 4px 0;
       padding: 1rem 1.25rem;
-      font-size: 0.9rem;
+      font-size: 1.15rem;
       color: var(--ink);
     }
 
@@ -421,7 +454,7 @@
     }
 
     #conclusion .concl-eyebrow {
-      font-size: 10px;
+      font-size: 14px;
       font-weight: 500;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -438,7 +471,7 @@
     }
 
     #conclusion p {
-      font-size: 1.05rem;
+      font-size: 1.3rem;
       font-weight: 300;
       color: var(--muted);
       line-height: 1.85;
@@ -459,7 +492,7 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      font-size: 12px;
+      font-size: 16px;
       color: var(--muted);
     }
 
@@ -821,7 +854,7 @@
         </div>
       </div>
 
-      <div class="step" data-viz="viz-brand-main">
+      <div class="step" data-viz="viz-brand-hook">
         <p>
           All those subsidy-influenced purchases and PQP-driven re-entries eventually translate
           into demand for specific cars. And when buyers re-enter the market, they don't all
@@ -834,15 +867,12 @@
       </div>
 
       <!-- Step 3-1: Hook -->
-      <div class="step" data-viz="viz-brand-main">
-        <div class="step-clip">
-          <video autoplay loop muted playsinline src="q3-assets/car_video_02.mp4"></video>
-          <p class="step-clip-label">Full animation · Jan 2016 – May 2025</p>
-        </div>
+      <div class="step" data-viz="viz-brand-hook">
+        <h3 class="step-period-header">Full Animation &nbsp;·&nbsp; Jan 2016 – May 2025</h3>
         <p>
-          Nine years. Dozens of brands. Over a million registrations. The animation above
+          Nine years. Dozens of brands. Over a million registrations. The animation on the right
           compresses Singapore's entire car market from January 2016 to May 2025 into under
-          two minutes. Use the player on the right to pause and scrub through it at any point
+          two minutes. Use the player to pause and scrub through it at any point
           as you read.
         </p>
         <p>
@@ -851,11 +881,8 @@
       </div>
 
       <!-- Step 3-2: Stable Era -->
-      <div class="step" data-viz="viz-brand-main">
-        <div class="step-clip">
-          <video autoplay loop muted playsinline src="q3-assets/clip_gamma_stable_era.mp4"></video>
-          <p class="step-clip-label">The Stable Era · 2016 – 2019</p>
-        </div>
+      <div class="step" data-viz="viz-brand-stable">
+        <h3 class="step-period-header">The Stable Era &nbsp;·&nbsp; 2016 – 2019</h3>
         <p>
           From 2016 through 2019, the market was calm and predictable. Toyota and Honda traded
           the top spot back and forth — a rivalry decades in the making, rooted in Southeast Asia's
@@ -874,11 +901,8 @@
       </div>
 
       <!-- Step 3-3: COVID Cliff -->
-      <div class="step" data-viz="viz-brand-main">
-        <div class="step-clip">
-          <video autoplay loop muted playsinline src="q3-assets/clip_gamma_covid_cliff.mp4"></video>
-          <p class="step-clip-label">The COVID Cliff · 2020</p>
-        </div>
+      <div class="step" data-viz="viz-brand-covid">
+        <h3 class="step-period-header">The COVID Cliff &nbsp;·&nbsp; 2020</h3>
         <p>
           In April and May 2020, Singapore entered a strict COVID-19 circuit breaker.
           Every car dealership was ordered to close. The result is one of the most dramatic
@@ -895,11 +919,8 @@
       </div>
 
       <!-- Step 3-4: Frozen Years -->
-      <div class="step" data-viz="viz-brand-main">
-        <div class="step-clip">
-          <video autoplay loop muted playsinline src="q3-assets/clip_gamma_frozen_years.mp4"></video>
-          <p class="step-clip-label">The Frozen Years · 2021 – 2022</p>
-        </div>
+      <div class="step" data-viz="viz-brand-frozen">
+        <h3 class="step-period-header">The Frozen Years &nbsp;·&nbsp; 2021 – 2022</h3>
         <p>
           When dealerships reopened, volumes recovered — but never fully. A global semiconductor
           chip shortage, which ran from 2020 through 2023, disrupted automotive production
@@ -919,11 +940,8 @@
       </div>
 
       <!-- Step 3-5: EV Revolution -->
-      <div class="step" data-viz="viz-brand-main">
-        <div class="step-clip">
-          <video autoplay loop muted playsinline src="q3-assets/clip_gamma_ev_revolution.mp4"></video>
-          <p class="step-clip-label">The EV Revolution · 2022 – 2025</p>
-        </div>
+      <div class="step" data-viz="viz-brand-ev">
+        <h3 class="step-period-header">The EV Revolution &nbsp;·&nbsp; 2022 – 2025</h3>
         <p>
           BYD entered Singapore's market in 2022. By 2024, it had overtaken Toyota to become
           the island's best-selling car brand — the first time in decades that a non-Japanese
@@ -943,11 +961,8 @@
       </div>
 
       <!-- Step 3-6: New Order -->
-      <div class="step" data-viz="viz-brand-main">
-        <div class="step-clip">
-          <video autoplay loop muted playsinline src="q3-assets/clip_gamma_new_order.mp4"></video>
-          <p class="step-clip-label">The New Order · May 2025</p>
-        </div>
+      <div class="step" data-viz="viz-brand-neworder">
+        <h3 class="step-period-header">The New Order &nbsp;·&nbsp; May 2025</h3>
         <p>
           By May 2025, the final frame tells a story that would have been unrecognisable
           in 2016. BYD leads with 825 registrations. Toyota follows at 668. A second Chinese
@@ -965,7 +980,7 @@
           this earliest are the ones that lead.
         </div>
       </div>
-      <div class="step" data-viz="viz-brand-1">
+      <div class="step" data-viz="viz-brand-neworder">
         <p>
           Rankings don't just reflect brand preference. They encode the combined effect of
           COE category distribution, EV readiness, model pricing relative to PQP-influenced
@@ -1000,13 +1015,53 @@
 				</tableau-viz>
       </div>
 
-      <!-- Chapter 3 — persistent full video player -->
-      <div class="viz-screen" id="viz-brand-main">
-        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; Brand Sales Rankings · Full Animation</p>
+      <!-- Chapter 3 — Hook: full animation with controls -->
+      <div class="viz-screen" id="viz-brand-hook">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; Full Animation · Jan 2016 – May 2025</p>
         <video controls muted playsinline src="q3-assets/car_video_02.mp4"
           style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
         </video>
         <p class="video-hint">▶ Play · pause · and scrub to any moment in the animation</p>
+      </div>
+
+      <!-- Chapter 3 — Stable Era -->
+      <div class="viz-screen" id="viz-brand-stable">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The Stable Era · 2016 – 2019</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_stable_era.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+      <!-- Chapter 3 — COVID Cliff -->
+      <div class="viz-screen" id="viz-brand-covid">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The COVID Cliff · 2020</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_covid_cliff.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+      <!-- Chapter 3 — Frozen Years -->
+      <div class="viz-screen" id="viz-brand-frozen">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The Frozen Years · 2021 – 2022</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_frozen_years.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+      <!-- Chapter 3 — EV Revolution -->
+      <div class="viz-screen" id="viz-brand-ev">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The EV Revolution · 2022 – 2025</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_ev_revolution.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+      <!-- Chapter 3 — New Order -->
+      <div class="viz-screen" id="viz-brand-neworder">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The New Order · May 2025</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_new_order.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
       </div>
 
     </div>
@@ -1069,6 +1124,14 @@
     let currentVizId = null;
     function showViz(id) {
       if (id === currentVizId) return;
+
+      // Pause any video in the outgoing screen
+      const outgoing = document.getElementById(currentVizId);
+      if (outgoing) {
+        const outgoingVideo = outgoing.querySelector('video');
+        if (outgoingVideo) outgoingVideo.pause();
+      }
+
       currentVizId = id;
 
       const all = document.querySelectorAll('.viz-screen');
@@ -1086,10 +1149,15 @@
         }
       });
 
-      // Small delay so leaving transition starts first
+      // Small delay so leaving transition starts first, then activate and play incoming video
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
           incoming.classList.add('active');
+          const incomingVideo = incoming.querySelector('video');
+          if (incomingVideo) {
+            incomingVideo.currentTime = 0;
+            incomingVideo.play().catch(() => {});
+          }
         });
       });
     }
@@ -1119,7 +1187,7 @@
           showViz(vizId);
           if (vizId.startsWith('viz-ev')) setNavDot('chapter-1');
           if (vizId.startsWith('viz-pqp')) setNavDot('chapter-2');
-          if (vizId.startsWith('viz-brand')) setNavDot('chapter-3');
+          if (vizId.startsWith('viz-brand')) setNavDot('chapter-3'); // matches viz-brand-intro/hook/stable/covid/frozen/ev/neworder
         }
       });
 
