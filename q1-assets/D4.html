@@ -468,7 +468,7 @@
         ];
 
         const fmt = d3.format(",");
-        const fmtK = d3.format(".1~s");
+        const fmtK = d3.format(".2~s");
 
         const margin = { top: 60, right: 90, bottom: 55, left: 90 },
             width = 940 - margin.left - margin.right,
@@ -628,8 +628,9 @@
                     d3.max(data, d => Math.max(d.ev, d.ice));
             yLeft.domain([0, maxPop * 1.18]).nice();
 
-            let minAbs = viewType === 'ev' ? 0 : d3.min(data, d => Math.min(d.ev_abs, d.ice_abs));
-            let maxAbs = viewType === 'ice' ? d3.max(data, d => d.ice_abs) : d3.max(data, d => Math.max(d.ev_abs, d.ice_abs));
+            // Use global range for consistency across all views
+            const minAbs = d3.min(data, d => Math.min(d.ev_abs, d.ice_abs));
+            const maxAbs = d3.max(data, d => Math.max(d.ev_abs, d.ice_abs));
             yRight.domain([minAbs - 8000, maxAbs + 10000]).nice();
 
             // Axes
